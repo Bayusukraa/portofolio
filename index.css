@@ -1,0 +1,1616 @@
+/* =============================
+   GLOBAL STYLES
+============================= */
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #0f1117;
+  color: #e5e7eb;
+  line-height: 1.6;
+}
+
+.pf-root {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* =============================
+   NAVBAR
+============================= */
+/* =============================
+   NAVBAR RESPONSIVE FIX
+============================= */
+.pf-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.pf-menu-toggle span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: #00c6ff;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* responsive menu */
+@media (max-width: 900px) {
+  .pf-menu-toggle {
+    display: flex;
+  }
+
+  .pf-links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(15, 17, 23, 0.98);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    display: none;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #1f2937;
+    animation: slideDown 0.3s ease forwards;
+  }
+
+  .pf-links.active {
+    display: flex;
+  }
+
+  .pf-links a {
+    color: #e5e7eb;
+    padding: 0.8rem 0;
+    width: 100%;
+    text-align: left;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+
+  /* Tambahkan animasi warna biru di garis bawah navbar */
+  /* Navbar utama */
+.pf-nav {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* ini penting agar tulisan sejajar vertikal */
+  padding: 1rem 2rem; /* sesuaikan padding aslinya */
+  z-index: 1000;
+}
+
+/* Garis bawah animasi */
+.pf-nav::after {
+  content: "";
+  position: absolute;
+  bottom: 0;       /* letakkan di paling bawah navbar */
+  left: 0;
+  width: 100%;
+  height: 2px;     /* ketebalan garis */
+  background: linear-gradient(90deg, #0072ff, #00c6ff, #0072ff);
+  background-size: 300% 100%;
+  animation: moveGradient 4s linear infinite;
+  pointer-events: none; /* biar tidak mengganggu klik link */
+}
+
+/* Animasi gradasi bergerak kiri–kanan */
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+
+
+/* Animasi gradasi bergerak kiri–kanan */
+@keyframes navLineMove {
+  0% {
+    border-image-source: linear-gradient(90deg, #0072ff, #00c6ff, #0072ff);
+  }
+  50% {
+    border-image-source: linear-gradient(90deg, #00c6ff, #0072ff, #00c6ff);
+  }
+  100% {
+    border-image-source: linear-gradient(90deg, #0072ff, #00c6ff, #0072ff);
+  }
+}
+
+
+
+.pf-brand {
+  font-weight: 700; 
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  color: #fff;
+}
+.pf-brand span {
+  color: #00c6ff;
+}
+
+.pf-links {
+  display: flex;
+  gap: 1.8rem;
+}
+.pf-links a {
+  text-decoration: none;
+  color: #9ca3af;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.pf-links a:hover {
+  color: #00c6ff;
+}
+
+/* =============================
+   HERO SECTION
+============================= */
+.pf-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6rem 0 4rem;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.pf-hero-left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.pf-eyebrow {
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: #9ca3af;
+  letter-spacing: 1px;
+}
+
+.pf-hero h1 {
+  font-size: 3.2rem;
+  margin: 0.5rem 0;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.pf-gradient {
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.pf-lead {
+  margin-top: 1rem;
+  color: #d1d5db;
+  font-size: 1.1rem;
+  max-width: 520px;
+}
+
+/* BUTTONS */
+.pf-cta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+.btn-primary,
+.btn-outline {
+  padding: 0.8rem 1.8rem;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+.btn-primary {
+  background: linear-gradient(90deg, #0072ff, #00c6ff);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(0, 198, 255, 0.3);
+}
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+.btn-outline {
+  border: 2px solid #00c6ff;
+  color: #00c6ff;
+}
+.btn-outline:hover {
+  background: #00c6ff;
+  color: white;
+}
+
+/* SOCIAL ICONS */
+.pf-socials {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+.pf-socials a {
+  color: #9ca3af;
+  font-size: 1.6rem;
+  transition: all 0.3s ease;
+}
+.pf-socials a:hover {
+  color: #00c6ff;
+  transform: scale(1.15);
+}
+
+/* HERO RIGHT */
+.pf-hero-right {
+  flex: 1;
+  text-align: center;
+  min-width: 280px;
+  position: relative;
+}
+.pf-avatar-wrap {
+  position: relative;
+  display: inline-block;
+  aspect-ratio: 1/1;
+}
+.pf-avatar {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #00c6ff;
+  box-shadow: 0 0 30px rgba(0, 198, 255, 0.3);
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 25px rgba(0, 198, 255, 0.4); }
+  50% { box-shadow: 0 0 50px rgba(0, 198, 255, 0.7); }
+}
+
+/* HERO STATS */
+.pf-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+.pf-stats div {
+  text-align: center;
+  background: #1a1c24;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 198, 255, 0.05);
+}
+.pf-stats strong {
+  display: block;
+  font-size: 1.6rem;
+  color: #00c6ff;
+}
+
+/* =============================
+   SECTIONS
+============================= */
+.pf-section {
+  padding: 5rem 0;
+  border-bottom: 1px solid #1f2937;
+}
+
+.pf-section h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  text-align: center;
+}
+.pf-section-lead {
+  text-align: center;
+  color: #9ca3af;
+  margin-bottom: 3rem;
+}
+
+/* SKILLS */
+.pf-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+.pf-skill {
+  background: #1a1c24;
+  padding: 1.5rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+.pf-skill:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 15px rgba(0, 198, 255, 0.15);
+}
+.pf-skill-title {
+  font-weight: 600;
+  color: #fff;
+}
+.pf-skill-bar {
+  background: #2d2f3b;
+  height: 6px;
+  border-radius: 3px;
+  margin: 0.6rem 0;
+}
+.pf-skill-bar div {
+  height: 100%;
+  background: linear-gradient(90deg, #0072ff, #00c6ff);
+  border-radius: 3px;
+}
+
+/* PROJECTS */
+.pf-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.2rem;
+}
+.pf-project {
+  background: #1a1c24;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.pf-project:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px rgba(0, 198, 255, 0.2);
+}
+.pf-project-media img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+.pf-project-body {
+  padding: 1.5rem;
+}
+.pf-tech span {
+  background: #2d2f3b;
+  color: #00c6ff;
+  border-radius: 5px;
+  padding: 0.3rem 0.6rem;
+  margin-right: 0.4rem;
+  font-size: 0.8rem;
+}
+.pf-project-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+/* CONTACT */
+.pf-contact-grid {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pf-form {
+  flex: 1;
+  min-width: 300px;
+}
+.pf-form label {
+  display: block;
+  margin-bottom: 1.2rem;
+}
+.pf-form span {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+}
+.pf-form input,
+.pf-form textarea {
+  width: 100%;
+  background: #1f2937;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem;
+  color: #fff;
+  font-size: 1rem;
+}
+.pf-form input:focus,
+.pf-form textarea:focus {
+  outline: 2px solid #00c6ff;
+}
+
+/* CONTACT INFO */
+.pf-contact-info {
+  flex: 1;
+  min-width: 280px;
+}
+.pf-email {
+  color: #00c6ff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* FOOTER */
+.pf-footer {
+  text-align: center;
+  padding: 2rem 0;
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+/* ==== MODERNIZED PROJECTS SECTION ==== */
+.pf-section.projects-modern {
+  background: radial-gradient(circle at top, rgba(0, 114, 255, 0.12), transparent);
+  border-radius: 20px;
+  padding: 4rem 2rem;
+}
+
+.pf-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+}
+
+.pf-project {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(0, 198, 255, 0.2);
+  box-shadow: 0 0 10px rgba(0, 198, 255, 0.05);
+}
+
+.pf-project:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 0 25px rgba(0, 198, 255, 0.3);
+}
+
+.pf-project-media {
+  position: relative;
+  overflow: hidden;
+}
+
+.pf-project-media img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  filter: brightness(0.8);
+  transition: all 0.4s ease;
+}
+
+.pf-project:hover .pf-project-media img {
+  transform: scale(1.08);
+  filter: brightness(1);
+}
+
+.pf-project-body {
+  padding: 1.5rem 1.7rem;
+  position: relative;
+}
+
+.pf-project-body h3 {
+  color: #fff;
+  margin: 0 0 0.6rem;
+  font-size: 1.3rem;
+}
+
+.pf-project-body p {
+  color: #c9d1d9;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.pf-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.pf-tech span {
+  background: linear-gradient(90deg, rgba(0, 114, 255, 0.15), rgba(0, 198, 255, 0.2));
+  color: #00c6ff;
+  border: 1px solid rgba(0, 198, 255, 0.2);
+  border-radius: 8px;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+  transition: background 0.3s ease;
+}
+
+.pf-tech span:hover {
+  background: rgba(0, 198, 255, 0.3);
+}
+
+.pf-project-actions {
+  margin-top: 1.2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.pf-project-actions .link {
+  color: #00c6ff;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.3s ease;
+}
+
+.pf-project-actions .link:hover {
+  color: #fff;
+  text-shadow: 0 0 8px #00c6ff;
+}
+
+
+/* =============================
+   RESPONSIVE DESIGN
+============================= */
+@media (max-width: 900px) {
+  .pf-links {
+    display: none;
+  }
+  .pf-hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 4rem 0 3rem;
+  }
+  .pf-hero h1 {
+    font-size: 2.4rem;
+  }
+  .pf-avatar {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pf-root {
+    padding: 0 1rem;
+  }
+  .pf-hero h1 {
+    font-size: 2rem;
+  }
+  .btn-primary,
+  .btn-outline {
+    width: 100%;
+    text-align: center;
+  }
+  .pf-avatar {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+/* ==== MODERNIZED SKILLS SECTION ==== */
+.pf-section-header {
+  position: relative;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.pf-line-decor {
+  width: 180px;
+  height: 3px;
+  margin: 0 auto 0.8rem;
+  background: linear-gradient(90deg, #0072ff, #00c6ff);
+  border-radius: 6px;
+  box-shadow: 0 0 12px rgba(0, 198, 255, 0.6);
+  animation: glowLine 3s ease-in-out infinite alternate;
+}
+
+@keyframes glowLine {
+  0% {
+    box-shadow: 0 0 8px rgba(0, 198, 255, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 18px rgba(0, 198, 255, 0.8);
+  }
+}
+
+.pf-skills-modern {
+  background: radial-gradient(circle at top, rgba(0, 114, 255, 0.15), transparent);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+}
+
+.pf-skill-modern {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 1.3rem;
+  transition: 0.3s;
+  box-shadow: 0 0 10px rgba(0, 198, 255, 0.05);
+}
+
+.pf-skill-modern:hover {
+  background: rgba(0, 198, 255, 0.1);
+  box-shadow: 0 0 25px rgba(0, 198, 255, 0.3);
+}
+
+.pf-skill-title {
+  font-weight: 600;
+  text-align: left;
+  margin-bottom: 0.4rem;
+}
+
+.pf-skill-bar {
+  background: rgba(255, 255, 255, 0.1);
+  height: 6px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.8rem;
+}
+
+.pf-skill-bar div {
+  height: 100%;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  border-radius: 4px;
+}
+
+.pf-skill-tech {
+  color: #aaa;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+
+/* === Responsive Navigation === */
+.pf-menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.pf-menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+.pf-links {
+  display: flex;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .pf-menu-toggle {
+    display: flex;
+  }
+
+  .pf-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.9);
+    width: 200px;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .pf-links.active {
+    display: flex;
+  }
+
+  .pf-links a {
+    color: white;
+    text-align: right;
+    padding: 0.5rem 0;
+  }
+}
+
+/* === Avatar & Glow Effect === */
+.pf-avatar-wrap {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: auto;
+}
+
+.pf-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #00f5ff;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+.pf-avatar-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 50px 15px rgba(0, 255, 255, 0.4);
+  animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+  from { opacity: 0.6; transform: scale(1); }
+  to { opacity: 1; transform: scale(1.1); }
+}
+
+/* === Responsive Hero Layout === */
+@media (max-width: 900px) {
+  .pf-hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .pf-hero-right {
+    margin-top: 2rem;
+  }
+}
+
+/* ==== ANIMASI BORDER NEON BERGERAK ==== */
+.pf-stat-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #11151f;
+  color: #fff;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pf-stat-card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    120deg,
+    #00c6ff,
+    #0072ff,
+    #00c6ff,
+    #0072ff
+  );
+  background-size: 300% 300%;
+  z-index: 0;
+  border-radius: 18px;
+  animation: borderMove 5s linear infinite;
+  filter: blur(3px);
+}
+
+.pf-stat-card::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: #0d1117;
+  border-radius: 14px;
+  z-index: 1;
+}
+
+.pf-stat-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Animasi border bergerak */
+@keyframes borderMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Efek hover tambahan */
+.pf-stat-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 198, 255, 0.5);
+}
+
+/* ==== ANIMASI BORDER BERGERAK UNTUK STAT CARD ==== */
+.pf-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.pf-stat-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #0d1117;
+  color: #fff;
+  text-align: center;
+  padding: 1.5rem 2rem;
+  min-width: 120px;
+  transition: transform 0.3s ease;
+}
+
+.pf-stat-card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    120deg,
+    #00c6ff,
+    #0072ff,
+    #00c6ff,
+    #0072ff
+  );
+  background-size: 300% 300%;
+  border-radius: 18px;
+  z-index: 0;
+  animation: borderMove 5s linear infinite;
+  filter: blur(2px);
+}
+
+.pf-stat-card::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: #0d1117;
+  border-radius: 14px;
+  z-index: 1;
+}
+
+.pf-stat-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes borderMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.pf-stat-card strong {
+  display: block;
+  font-size: 2rem;
+  color: #00c6ff;
+  margin-bottom: 0.3rem;
+  text-shadow: 0 0 10px rgba(0, 198, 255, 0.6);
+}
+
+.pf-stat-card span {
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+.pf-stat-card:hover {
+  transform: scale(1.08);
+}
+
+/* CERTIFICATES SECTION */
+.certificates-modern {
+  text-align: center;
+}
+
+.pf-cert-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.pf-cert-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+.pf-cert-card:hover {
+  border-color: #00b4d8;
+  transform: translateY(-5px);
+}
+
+.pf-cert-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.pf-cert-body {
+  padding: 1.2rem;
+}
+
+.pf-cert-body h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.pf-cert-issuer {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 0.8rem;
+}
+
+.pf-cert-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #00b4d8;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.pf-cert-link:hover {
+  text-decoration: underline;
+}
+
+/* CERTIFICATES SCROLL SECTION */
+.pf-cert-scroll {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 1rem 0;
+}
+
+.pf-cert-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.pf-cert-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.pf-cert-card {
+  flex: 0 0 300px;
+  scroll-snap-align: start;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  overflow: hidden;
+  text-align: left;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+}
+
+.pf-cert-card:hover {
+  border-color: #00b4d8;
+  transform: translateY(-5px);
+}
+
+.pf-cert-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.pf-cert-body {
+  padding: 1.2rem;
+}
+
+.pf-cert-body h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.pf-cert-issuer {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 0.8rem;
+}
+
+.pf-cert-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #00b4d8;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.pf-cert-link:hover {
+  text-decoration: underline;
+}
+
+/* =============================
+   CONTACT SECTION - GET IN TOUCH
+============================= */
+.pf-contact {
+  background: radial-gradient(circle at top, rgba(0, 198, 255, 0.05), transparent);
+  padding: 5rem 1.5rem;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 198, 255, 0.05);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.pf-contact h2 {
+  font-size: 2.2rem;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.pf-contact .pf-section-lead {
+  text-align: center;
+  color: #9ca3af;
+  margin-bottom: 3rem;
+}
+
+/* CONTACT FORM */
+.pf-form {
+  background: rgba(15, 17, 23, 0.9);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 198, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pf-form:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 30px rgba(0, 198, 255, 0.4);
+}
+
+.pf-form label span {
+  font-weight: 600;
+  color: #00c6ff;
+}
+
+.pf-form input,
+.pf-form textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1.2rem;
+  border-radius: 10px;
+  border: 1px solid #00c6ff;
+  background: #0f1117;
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.pf-form input:focus,
+.pf-form textarea:focus {
+  outline: none;
+  box-shadow: 0 0 12px #00c6ff;
+  border-color: #00c6ff;
+}
+
+/* BUTTON */
+.pf-form button {
+  padding: 0.8rem 2rem;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  background: linear-gradient(90deg, #0072ff, #00c6ff);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 198, 255, 0.3);
+}
+
+.pf-form button:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 0 25px rgba(0, 198, 255, 0.6);
+}
+
+/* CONTACT INFO */
+.pf-contact-info {
+  background: rgba(15, 17, 23, 0.9);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 198, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pf-contact-info:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 30px rgba(0, 198, 255, 0.4);
+}
+
+.pf-contact-info a {
+  color: #00c6ff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.pf-contact-info a:hover {
+  color: #fff;
+  text-shadow: 0 0 8px #00c6ff;
+  transform: scale(1.05);
+}
+
+/* ==== MODERN CONTACT SECTION ==== */
+.pf-contact-modern {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: linear-gradient(to bottom, #0a0a0f, #111120);
+}
+
+.pf-contact-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+  align-items: start;
+}
+
+.pf-contact-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px);
+  text-align: left;
+}
+
+.pf-input-group {
+  margin-bottom: 1.2rem;
+}
+
+.pf-input-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #00c6ff;
+  font-size: 0.9rem;
+}
+
+.pf-input-group input,
+.pf-input-group textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  font-size: 0.95rem;
+  outline: none;
+  transition: 0.3s;
+}
+
+.pf-input-group input:focus,
+.pf-input-group textarea:focus {
+  box-shadow: 0 0 0 2px #00c6ff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.btn-modern {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-modern:hover {
+  background: linear-gradient(90deg, #0072ff, #00c6ff);
+  transform: translateY(-2px);
+}
+
+.pf-contact-info-modern {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  text-align: left;
+}
+
+.pf-contact-info-modern h3 {
+  color: #00c6ff;
+  margin-bottom: 1rem;
+}
+
+.pf-info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0.6rem 0;
+  color: #ccc;
+}
+
+.pf-info-item a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.pf-info-item a:hover {
+  color: #00c6ff;
+}
+
+.pf-info-socials {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.pf-info-socials a {
+  color: #bbb;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: 0.3s;
+}
+
+.pf-info-socials a:hover {
+  color: #00c6ff;
+  transform: translateX(5px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .pf-contact-grid {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+/* ==== MODERN CONTACT SECTION – REFINED VERSION ==== */
+.pf-contact-modern {
+  text-align: center;
+  padding: 6rem 2rem;
+  background: radial-gradient(circle at 20% 20%, #0b0c1a, #050510);
+  color: #f5f5f5;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle animated gradient background */
+.pf-contact-modern::before {
+  content: "";
+  position: absolute;
+  top: -30%;
+  left: -30%;
+  width: 160%;
+  height: 160%;
+  background: conic-gradient(from 180deg at 50% 50%, #0072ff33, #00c6ff33, #0072ff33);
+  animation: rotateBg 20s linear infinite;
+  z-index: 0;
+  opacity: 0.2;
+  filter: blur(100px);
+}
+
+@keyframes rotateBg {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.pf-contact-modern h2 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.8rem;
+  position: relative;
+  z-index: 1;
+}
+
+.pf-section-lead {
+  color: #b8c2d1;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.pf-contact-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 2.5rem;
+  margin-top: 3rem;
+  align-items: stretch;
+  position: relative;
+  z-index: 1;
+}
+
+/* ==== LEFT FORM ==== */
+.pf-contact-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 18px;
+  padding: 2.5rem 2rem;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pf-contact-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 40px rgba(0, 198, 255, 0.15);
+}
+
+.pf-input-group {
+  margin-bottom: 1.5rem;
+}
+
+.pf-input-group label {
+  display: block;
+  font-weight: 500;
+  color: #00c6ff;
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.5px;
+}
+
+.pf-input-group input,
+.pf-input-group textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f5f5f5;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.pf-input-group input:focus,
+.pf-input-group textarea:focus {
+  border-color: #00c6ff;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(0, 198, 255, 0.3);
+  outline: none;
+}
+
+/* ==== BUTTON ==== */
+.btn-modern {
+  width: 100%;
+  padding: 0.9rem 1.5rem;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  letter-spacing: 0.3px;
+  box-shadow: 0 5px 25px rgba(0, 198, 255, 0.25);
+}
+
+.btn-modern:hover {
+  background: linear-gradient(90deg, #0072ff, #00c6ff);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0, 198, 255, 0.35);
+}
+
+/* ==== RIGHT INFO CARD ==== */
+.pf-contact-info-modern {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 2.5rem 2rem;
+  border-radius: 18px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s ease;
+}
+
+.pf-contact-info-modern:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 35px rgba(0, 198, 255, 0.15);
+}
+
+.pf-contact-info-modern h3 {
+  color: #00c6ff;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.pf-contact-info-modern p {
+  color: #b8c2d1;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.pf-info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0.8rem 0;
+  font-size: 0.95rem;
+  color: #d1d1d1;
+}
+
+.pf-info-item a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.pf-info-item a:hover {
+  color: #00c6ff;
+  transform: translateX(4px);
+}
+
+.pf-info-socials {
+  margin-top: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.pf-info-socials a {
+  color: #bbb;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: all 0.3s ease;
+}
+
+.pf-info-socials a:hover {
+  color: #00c6ff;
+  transform: translateX(6px);
+}
+
+/* ==== SIMPLIFIED RESPONSIVE CONTACT SECTION ==== */
+.pf-contact-modern {
+  text-align: center;
+  padding: 4rem 1.5rem;
+  background: #0b0c1a;
+  color: #f5f5f5;
+}
+
+.pf-contact-modern h2 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.pf-contact-modern .pf-section-lead {
+  color: #9ca3af;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Grid Layout */
+.pf-contact-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Contact Form */
+.pf-contact-card {
+  background: #111320;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: left;
+  border: 1px solid #1f2937;
+}
+
+.pf-input-group {
+  margin-bottom: 1rem;
+}
+
+.pf-input-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #00c6ff;
+}
+
+.pf-input-group input,
+.pf-input-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #2a2d3a;
+  background: #0f1117;
+  color: white;
+  font-size: 1rem;
+}
+
+.pf-input-group input:focus,
+.pf-input-group textarea:focus {
+  border-color: #00c6ff;
+  outline: none;
+}
+
+/* Button */
+.btn-modern {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-modern:hover {
+  background: linear-gradient(90deg, #0072ff, #00c6ff);
+}
+
+/* Contact Info */
+.pf-contact-info-modern {
+  background: #111320;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: left;
+  border: 1px solid #1f2937;
+}
+
+.pf-contact-info-modern h3 {
+  color: #00c6ff;
+  margin-bottom: 1rem;
+}
+
+.pf-info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0.6rem 0;
+  color: #ccc;
+}
+
+.pf-info-item a {
+  color: #00c6ff;
+  text-decoration: none;
+}
+
+.pf-info-item a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .pf-contact-modern {
+    padding: 3rem 1rem;
+  }
+
+  .pf-contact-modern h2 {
+    font-size: 1.8rem;
+  }
+}
